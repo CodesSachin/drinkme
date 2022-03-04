@@ -3,6 +3,8 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:drinkme/main.dart';
 
+import '../Homepage.dart';
+
 
 
 class SplashScreen extends StatefulWidget {
@@ -17,11 +19,10 @@ class SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    loadData();
-  }
-
-  Future<Timer> loadData() async {
-    return new Timer(Duration(seconds: 5), onDoneLoading);
+    Timer(
+        Duration(seconds: 2),
+            () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => homepage())));
   }
 
   @override
@@ -29,7 +30,6 @@ class SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.black45,
       body: Column(
-
         children: [
           Expanded(
             child: Container(
@@ -39,17 +39,15 @@ class SplashScreenState extends State<SplashScreen> {
                fit: BoxFit.cover
              ),
            ),
-
           ),
         ),
-
         ],
       ),
     );
   }
 
-  onDoneLoading() async {
-    Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => MyApp()));
-  }
+  // onDoneLoading() async {
+  //   Navigator.of(context)
+  //       .pushReplacement(MaterialPageRoute(builder: (context) => MyApp()));
+  // }
 }
